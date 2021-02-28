@@ -8,7 +8,8 @@ react + bootstrap + formik(managing forms) + yup(defining validations) + boostra
 
 clone this repo :
 
-1. git clone https://github.com/adil62/react-resume-builder.git
-2. enter the cloned dir and run:
-   .._ npm update && npm install - to install all the required deps.
-   .._ npm start - to launch the app.
+- git clone https://github.com/adil62/react-resume-builder.git
+- enter the cloned dir and run:
+
+1. npm update && npm install - to install all the required deps.
+2. npm start - to launch the app.
