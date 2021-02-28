@@ -88,7 +88,6 @@ const CreateResumeForm = () => {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       dispatch({ type: "CREATE_RESUME.SET_FORM", payload: values });
-      resetForm();
     },
   });
 
