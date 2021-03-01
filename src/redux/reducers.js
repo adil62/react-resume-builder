@@ -12,7 +12,7 @@ const createResume = (
   action
 ) => {
   switch (action.type) {
-    case "CREATE_RESUME.SET_FORM":
+    case "CREATE_RESUME.BUILD_CLICKED":
       return {
         form: action.payload,
         isResumeCreated: true,
@@ -20,10 +20,10 @@ const createResume = (
       };
 
     case "CREATE_RESUME.PRINT_CLICKED":
-      return { form: {}, isResumeCreated: false };
+      return { ...state, isResumeCreated: true };
 
     case "CREATE_RESUME.NEW_CLICKED":
-      return { form: {}, isResumeCreated: false };
+      return { ...state, form: {}, isResumeCreated: false };
 
     default:
       return state;

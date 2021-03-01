@@ -96,7 +96,8 @@ const CreateResumeForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
-      dispatch({ type: "CREATE_RESUME.SET_FORM", payload: values });
+      alert("ddd");
+      dispatch({ type: "CREATE_RESUME.BUILD_CLICKED", payload: values });
     },
   });
 
@@ -120,7 +121,8 @@ const CreateResumeForm = () => {
     content: () => componentRef.current,
   });
 
-  const onPrintClick = () => {
+  const onPrintClick = (e) => {
+    e.preventDefault();
     handlePrint();
 
     dispatch({ type: "CREATE_RESUME.PRINT_CLICKED" });
