@@ -33,6 +33,14 @@ const Styles = styled.div`
     display: block;
     margin-bottom: 40px;
   }
+  .btn-new {
+    background-color: ${(props) => props.theme.colors.yellow};
+    color: black;
+    border: none;
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 40px;
+  }
   .section {
     & h4 {
       color: ${(props) => props.theme.colors.dark};
@@ -68,6 +76,7 @@ const Styles = styled.div`
 const CreateResumeForm = () => {
   const createResumeState = useSelector((state) => state.createResume);
   const dispatch = useDispatch();
+  const selectInputRef = useRef();
 
   const validationSchema = yup.object({
     name: yup.string().required("name is required"),
@@ -117,6 +126,12 @@ const CreateResumeForm = () => {
     dispatch({ type: "CREATE_RESUME.PRINT_CLICKED" });
   };
 
+  const onNewClick = () => {
+    dispatch({ type: "CREATE_RESUME.NEW_CLICKED" });
+    formik.resetForm();
+    selectInputRef.current.select.clearValue();
+  };
+
   return (
     <Styles>
       <Navbar />
@@ -145,6 +160,7 @@ const CreateResumeForm = () => {
             <div className="section skills col-md-6  mt-4">
               <h4>Skills</h4>
               <Select
+                ref={selectInputRef}
                 defaultValue={[]}
                 isMulti
                 name="skills"
@@ -160,13 +176,22 @@ const CreateResumeForm = () => {
 
             <div className="col-md-12 d-flex justify-content-center">
               {createResumeState?.isResumeCreated ? (
-                <button
-                  type="button"
-                  className="btn-print py-2 px-4 mt-5 ml-3"
-                  onClick={onPrintClick}
-                >
-                  Download
-                </button>
+                <React.Fragment>
+                  <button
+                    type="button"
+                    className="btn-print py-2 px-4 mt-5 ml-3"
+                    onClick={onPrintClick}
+                  >
+                    Download
+                  </button>
+                  <button
+                    type="button"
+                    className="btn-new py-2 px-4 mt-5 ml-3"
+                    onClick={onNewClick}
+                  >
+                    New
+                  </button>
+                </React.Fragment>
               ) : (
                 <button type="submit" className="btn-build py-2 px-4 mt-5">
                   Build

@@ -25,9 +25,10 @@ const BasicDetails = ({ formik }) => {
         className="form-control mt-3"
         value={formik.values.name}
         onChange={formik.handleChange}
-        error={formik.touched.name && Boolean(formik.errors.name)}
       />
-      <div className="validation-error mt-2"> {formik.errors?.name} </div>
+      {formik.errors.name && formik.touched.name ? (
+        <div className="validation-error mt-2"> {formik.errors.name} </div>
+      ) : null}
 
       <input
         placeholder="Email"
@@ -37,9 +38,10 @@ const BasicDetails = ({ formik }) => {
         className="form-control mt-3"
         value={formik.values.email}
         onChange={formik.handleChange}
-        error={formik.touched.email && Boolean(formik.errors.email)}
       />
-      <div className="validation-error mt-2"> {formik.errors?.email} </div>
+      {formik.errors.email && formik.touched.email ? (
+        <div className="validation-error mt-2"> {formik.errors.email} </div>
+      ) : null}
 
       <input
         placeholder="Address"
@@ -49,9 +51,10 @@ const BasicDetails = ({ formik }) => {
         className="form-control mt-3"
         value={formik.values.address}
         onChange={formik.handleChange}
-        error={formik.touched.address && Boolean(formik.errors.address)}
       />
-      <div className="validation-error mt-2"> {formik.errors?.address} </div>
+      {formik.errors.address && formik.touched.address ? (
+        <div className="validation-error mt-2"> {formik.errors.address} </div>
+      ) : null}
 
       <input
         placeholder="Phone"
@@ -61,9 +64,10 @@ const BasicDetails = ({ formik }) => {
         className="form-control mt-3"
         value={formik.values.phone}
         onChange={formik.handleChange}
-        error={formik.touched.phone && Boolean(formik.errors.phone)}
       />
-      <div className="validation-error mt-2"> {formik.errors?.phone} </div>
+      {formik.errors.phone && formik.touched.phone ? (
+        <div className="validation-error mt-2"> {formik.errors.phone} </div>
+      ) : null}
     </>
   );
 };
